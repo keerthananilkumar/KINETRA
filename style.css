@@ -1,0 +1,120 @@
+/* KINETRA - Industrial Design System */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #171B1E;
+    color: #F2F0EB;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #202629;
+    padding: 22px 8%;
+    border-bottom: 1px solid #41474B;
+}
+
+.logo {
+    color: #F28C28;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.hero {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #171B1E, #292F33);
+}
+
+.hero h1 {
+    font-size: clamp(48px, 9vw, 90px);
+    letter-spacing: 8px;
+    color: #F28C28;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 20px;
+    color: #B8BEC2;
+    letter-spacing: 2px;
+}
+
+.hero-description {
+    max-width: 600px;
+    line-height: 1.7;
+    margin-top: 25px;
+    color: #D0D4D6;
+}
+
+.button {
+    margin-top: 35px;
+    padding: 15px 35px;
+    background-color: #F28C28;
+    color: #171B1E;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background-color: #FFAB52;
+    transform: translateY(-3px);
+}
+
+.section {
+    padding: 70px 8%;
+}
+
+.section h2 {
+    color: #F28C28;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.lab-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 22px;
+}
+
+.lab-card {
+    background-color: #252C30;
+    padding: 30px;
+    border: 1px solid #41474B;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.lab-card:hover {
+    border-color: #F28C28;
+    transform: translateY(-5px);
+}
+
+.lab-card h3 {
+    color: #F28C28;
+    margin-bottom: 15px;
+}
+
+.lab-card p {
+    color: #B8BEC2;
+    line-height: 1.6;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background-color: #202629;
+    color: #858D92;
+    border-top: 1px solid #41474B;
+}
