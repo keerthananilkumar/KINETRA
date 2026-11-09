@@ -1,24 +1,12 @@
-```html
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    ```html
-<!-- Google Analytics - KINETRA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXQQDBSD3S"></script>
-
-<script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag(){
-        dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-YXQQDBSD3S');
-</script>
-```
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="Efwweejjd9JTdmXOZYGpjYvYVA_6XfXnoKUVuei2CU4" />
+
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="Efwweejjd9JTdmXOZYGpjYvYVA_6XfXnoKUVuei2CU4">
 
     <!-- Primary SEO -->
     <title>KINETRA | Interactive Mechanical Engineering Playground</title>
@@ -28,22 +16,368 @@
     <meta name="keywords" content="KINETRA, mechanical engineering, engineering playground, mechanism lab, gear systems, robotics, machine design, kinematics, engineering simulations">
 
     <meta name="author" content="KINETRA">
-
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph / Social Sharing -->
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://keerthananilkumar.github.io/KINETRA/">
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="KINETRA | Engineering in Motion">
     <meta property="og:description" content="Explore machines, experiment with mechanisms and discover the engineering behind movement.">
     <meta property="og:url" content="https://keerthananilkumar.github.io/KINETRA/">
     <meta property="og:site_name" content="KINETRA">
 
-    <!-- Twitter / X Sharing -->
-    <meta name="twitter:card" content="summary_large_image">
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="KINETRA | Engineering in Motion">
     <meta name="twitter:description" content="A browser-based playground for mechanical engineering exploration.">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YXQQDBSD3S"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'G-YXQQDBSD3S');
+    </script>
+
 </head>
-```
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <header class="navbar">
+        <a href="#" class="logo">
+            <span class="logo-icon">⚙</span>
+            <span>
+                KINETRA
+                <small>BROWSER-BASED ENGINEERING</small>
+            </span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#labs">Labs</a>
+            <a href="#workshop">Workshop</a>
+            <a href="#library">Library</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <a href="#workshop" class="nav-button">
+            Launch Workshop ↗
+        </a>
+    </header>
+
+
+    <!-- HERO DASHBOARD -->
+
+    <main>
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-info">
+                <span class="eyebrow">MECHANICAL ENGINEERING PLAYGROUND</span>
+
+                <h1>
+                    Understand the motion.
+                    <span>Master the mechanics.</span>
+                </h1>
+
+                <p>
+                    Explore machines. Experiment with mechanisms.
+                    Discover the engineering behind movement.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#labs" class="button">
+                        Explore Labs →
+                    </a>
+
+                    <a href="#workshop" class="secondary-button">
+                        Enter Workshop
+                    </a>
+                </div>
+
+                <div class="hero-caption">
+                    <span class="status-dot"></span>
+                    ENGINEERING IN MOTION
+                </div>
+            </div>
+
+            <div class="hero-visual">
+
+                <div class="visual-label">
+                    <span>01 / MECHANICAL SYSTEMS</span>
+                    <span>3D SHOWCASE</span>
+                </div>
+
+                <div class="mechanical-display">
+                    <div class="gear gear-one">⚙</div>
+                    <div class="gear gear-two">⚙</div>
+                    <div class="gear gear-three">⚙</div>
+                    <div class="crosshair"></div>
+                </div>
+
+                <div class="visual-footer">
+                    <span>MECHANISMS</span>
+                    <span>TRANSMISSION</span>
+                    <span>ROBOTICS</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURED LABS -->
+
+    <section class="section" id="labs">
+
+        <div class="section-heading">
+            <span class="eyebrow">EXPLORE THE ENVIRONMENT</span>
+            <h2>Four labs. Infinite possibilities.</h2>
+            <p>
+                Explore the systems that make machines move,
+                transmit power and perform work.
+            </p>
+        </div>
+
+        <div class="lab-container">
+
+            <article class="lab-card">
+                <span class="lab-number">01 / LAB</span>
+                <div class="lab-image mechanism-image"></div>
+                <h3>Mechanism Lab</h3>
+                <p>Explore linkages, velocity, acceleration and mechanical motion.</p>
+                <a href="#labs">Explore Lab ↗</a>
+            </article>
+
+            <article class="lab-card">
+                <span class="lab-number">02 / LAB</span>
+                <div class="lab-image gear-image"></div>
+                <h3>Gear Lab</h3>
+                <p>Discover gear systems, transmission ratios and rotational motion.</p>
+                <a href="#labs">Explore Lab ↗</a>
+            </article>
+
+            <article class="lab-card">
+                <span class="lab-number">03 / LAB</span>
+                <div class="lab-image robotics-image"></div>
+                <h3>Robotics Lab</h3>
+                <p>Experiment with robotic arms, joints and kinematics.</p>
+                <a href="#labs">Explore Lab ↗</a>
+            </article>
+
+            <article class="lab-card">
+                <span class="lab-number">04 / LAB</span>
+                <div class="lab-image machine-image"></div>
+                <h3>Machine Lab</h3>
+                <p>Explore shafts, bearings, springs and machine components.</p>
+                <a href="#labs">Explore Lab ↗</a>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- WORKSHOP -->
+
+    <section class="section workshop-section" id="workshop">
+
+        <div class="section-heading">
+            <span class="eyebrow">YOUR ENGINEERING WORKSPACE</span>
+            <h2>Build. Assemble. Simulate.</h2>
+            <p>
+                A browser-based environment where mechanical
+                ideas become interactive assemblies.
+            </p>
+        </div>
+
+        <div class="workshop-preview">
+
+            <div class="workshop-toolbar">
+                <span>⚙ KINETRA WORKSHOP</span>
+                <span>ASSEMBLY PREVIEW</span>
+            </div>
+
+            <div class="workshop-interface">
+
+                <aside class="component-panel">
+                    <h4>COMPONENTS</h4>
+                    <p>Shafts</p>
+                    <p>Gears</p>
+                    <p>Bearings</p>
+                    <p>Joints</p>
+                </aside>
+
+                <div class="workshop-viewport">
+                    <span>3D ASSEMBLY VIEWPORT</span>
+                    <div class="viewport-symbol">⚙</div>
+                    <p>ENGINEERING WORKSPACE</p>
+                </div>
+
+                <aside class="properties-panel">
+                    <h4>PROPERTIES</h4>
+                    <p>Position</p>
+                    <p>Rotation</p>
+                    <p>Alignment</p>
+                    <p>Joint Type</p>
+                </aside>
+
+            </div>
+
+            <div class="workshop-footer">
+                BUILD <span>→</span>
+                ASSEMBLE <span>→</span>
+                SIMULATE
+            </div>
+
+        </div>
+
+        <div class="workshop-note">
+            <span>COMING IN FUTURE RELEASES</span>
+            <p>
+                The KINETRA Workshop is under development.
+                Its interactive assembly tools will arrive in future versions.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- ENGINEERING LIBRARY -->
+
+    <section class="section" id="library">
+
+        <div class="section-heading">
+            <span class="eyebrow">ENGINEERING KNOWLEDGE BASE</span>
+            <h2>Understand the science behind the motion.</h2>
+            <p>
+                Explore mechanical engineering concepts,
+                equations and technical explanations.
+            </p>
+        </div>
+
+        <div class="library-container">
+
+            <div class="library-card">
+                <span>01</span>
+                <h3>Kinematics</h3>
+                <p>Mechanisms, velocity and acceleration.</p>
+            </div>
+
+            <div class="library-card">
+                <span>02</span>
+                <h3>Machine Design</h3>
+                <p>Gears, shafts, bearings and springs.</p>
+            </div>
+
+            <div class="library-card">
+                <span>03</span>
+                <h3>Thermal Engineering</h3>
+                <p>Thermodynamics and heat transfer.</p>
+            </div>
+
+            <div class="library-card">
+                <span>04</span>
+                <h3>Robotics</h3>
+                <p>Joint systems and robot kinematics.</p>
+            </div>
+
+            <div class="library-card">
+                <span>05</span>
+                <h3>Manufacturing</h3>
+                <p>Machining and manufacturing processes.</p>
+            </div>
+
+            <div class="library-card">
+                <span>06</span>
+                <h3>Engineering Mathematics</h3>
+                <p>Equations and numerical methods.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="section about-section" id="about">
+
+        <div class="about-content">
+            <span class="eyebrow">ABOUT KINETRA</span>
+
+            <h2>Engineering is better when you can experience it.</h2>
+
+            <p>
+                KINETRA is a browser-based mechanical engineering
+                playground built to make mechanical systems easier
+                to understand through visual exploration,
+                interactive simulations and practical engineering knowledge.
+            </p>
+
+            <div class="principles">
+                <div>
+                    <h3>01 / EXPLORE</h3>
+                    <p>Discover how mechanical systems work.</p>
+                </div>
+
+                <div>
+                    <h3>02 / EXPERIMENT</h3>
+                    <p>Change parameters and observe their effects.</p>
+                </div>
+
+                <div>
+                    <h3>03 / UNDERSTAND</h3>
+                    <p>Connect practical motion with engineering theory.</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div>
+            <h2>KINETRA ⚙</h2>
+            <p>ENGINEERING IN MOTION</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="#labs">Labs</a>
+            <a href="#workshop">Workshop</a>
+            <a href="#library">Library</a>
+            <a href="#about">About</a>
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 KINETRA | Engineering in Motion
+            <span>VERSION 0.1</span>
+        </div>
+
+    </footer>
+
+</body>
+</html>
