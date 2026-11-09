@@ -1,7 +1,7 @@
 
 /* =========================================
    KINETRA — ENGINEERING IN MOTION
-   VERSION 0.1 — VISUAL FOUNDATION
+   VERSION 0.2 — TYPOGRAPHY UPGRADE
 ========================================= */
 
 :root {
@@ -30,7 +30,8 @@ body {
     background: var(--graphite);
     color: var(--white);
     font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.7;
     overflow-x: hidden;
 }
 
@@ -51,20 +52,17 @@ a {
 
 .navbar {
     width: 100%;
-    min-height: 76px;
+    min-height: 82px;
     padding: 0 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 25px;
-
     background: rgba(23, 27, 30, 0.95);
     border-bottom: 1px solid var(--border);
-
     position: sticky;
     top: 0;
     z-index: 1000;
-
     backdrop-filter: blur(14px);
 }
 
@@ -72,19 +70,19 @@ a {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 23px;
+    font-size: 27px;
     font-weight: 800;
     letter-spacing: 2px;
 }
 
 .logo-icon {
     color: var(--orange);
-    font-size: 32px;
+    font-size: 36px;
 }
 
 .logo small {
     display: block;
-    font-size: 8px;
+    font-size: 10px;
     color: var(--silver);
     letter-spacing: 1.5px;
 }
@@ -96,7 +94,7 @@ a {
 }
 
 .nav-links a {
-    font-size: 13px;
+    font-size: 15px;
     color: var(--silver);
     position: relative;
     transition: color 0.2s ease;
@@ -122,10 +120,10 @@ a {
 }
 
 .nav-button {
-    padding: 11px 19px;
+    padding: 13px 22px;
     background: var(--orange);
     color: #171B1E;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 800;
     border-radius: 4px;
     transition: 0.25s ease;
@@ -145,7 +143,6 @@ a {
 .hero {
     min-height: 720px;
     padding: 90px 5% 100px;
-
     background-color: var(--graphite);
 
     background-image:
@@ -153,7 +150,6 @@ a {
         linear-gradient(90deg, rgba(242, 140, 40, 0.035) 1px, transparent 1px);
 
     background-size: 45px 45px;
-
     position: relative;
 }
 
@@ -177,12 +173,10 @@ a {
 .hero-content {
     max-width: 1280px;
     margin: auto;
-
     display: grid;
     grid-template-columns: 250px 1fr;
     align-items: center;
     gap: 55px;
-
     position: relative;
     z-index: 1;
 }
@@ -193,16 +187,16 @@ a {
 
 .eyebrow {
     color: var(--orange);
-    font-size: 10px;
+    font-size: 13px;
     font-weight: 800;
     letter-spacing: 2px;
 }
 
 .hero h1 {
-    font-size: clamp(44px, 5.5vw, 72px);
-    line-height: 1.12;
+    font-size: clamp(48px, 5.5vw, 76px);
+    line-height: 1.1;
     margin: 25px 0;
-    letter-spacing: -2px;
+    letter-spacing: -2.5px;
 }
 
 .hero h1 span {
@@ -211,7 +205,8 @@ a {
 
 .hero-info > p {
     color: var(--silver);
-    font-size: 15px;
+    font-size: 18px;
+    line-height: 1.8;
     margin-bottom: 30px;
 }
 
@@ -219,15 +214,15 @@ a {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 13px;
+    gap: 15px;
 }
 
 .button,
 .secondary-button {
     display: inline-block;
-    padding: 13px 21px;
+    padding: 15px 24px;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 800;
     transition: 0.25s ease;
 }
@@ -254,15 +249,15 @@ a {
 
 .hero-caption {
     margin-top: 55px;
-    font-size: 9px;
+    font-size: 12px;
     letter-spacing: 1.5px;
     color: var(--silver);
 }
 
 .status-dot {
     display: inline-block;
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
     background: var(--orange);
     border-radius: 50%;
     margin-right: 8px;
@@ -279,7 +274,6 @@ a {
     border-radius: 12px;
     background: rgba(32, 39, 43, 0.78);
     overflow: hidden;
-
     box-shadow: 0 20px 70px rgba(0, 0, 0, 0.3);
 }
 
@@ -287,8 +281,8 @@ a {
 .visual-footer {
     display: flex;
     justify-content: space-between;
-    padding: 17px 22px;
-    font-size: 9px;
+    padding: 19px 22px;
+    font-size: 12px;
     letter-spacing: 1.5px;
     color: var(--silver);
 }
@@ -357,7 +351,6 @@ a {
     from {
         transform: rotate(0deg);
     }
-
     to {
         transform: rotate(360deg);
     }
@@ -368,7 +361,6 @@ a {
         transform: scale(0.95);
         opacity: 0.3;
     }
-
     50% {
         transform: scale(1.05);
         opacity: 0.8;
@@ -391,15 +383,17 @@ a {
 }
 
 .section-heading h2 {
-    font-size: clamp(32px, 3.5vw, 46px);
+    font-size: clamp(36px, 3.8vw, 50px);
+    line-height: 1.2;
     margin: 13px 0;
-    letter-spacing: -1px;
+    letter-spacing: -1.5px;
 }
 
 .section-heading > p {
     color: var(--silver);
-    font-size: 15px;
-    max-width: 620px;
+    font-size: 17px;
+    line-height: 1.8;
+    max-width: 700px;
 }
 
 
@@ -414,7 +408,7 @@ a {
 }
 
 .lab-card {
-    padding: 17px;
+    padding: 20px;
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 10px;
@@ -429,7 +423,7 @@ a {
 }
 
 .lab-number {
-    font-size: 9px;
+    font-size: 12px;
     letter-spacing: 1.5px;
     color: var(--orange);
 }
@@ -438,11 +432,9 @@ a {
     height: 145px;
     margin: 15px 0;
     border-radius: 6px;
-
     background-color: var(--panel-light);
     background-position: center;
     background-size: cover;
-
     transition: transform 0.35s ease;
 }
 
@@ -450,24 +442,24 @@ a {
     transform: scale(1.035);
 }
 
-/* Add actual image files to assets/images later. */
-
 .lab-card h3 {
-    font-size: 22px;
-    margin-bottom: 9px;
+    font-size: 24px;
+    line-height: 1.3;
+    margin-bottom: 12px;
 }
 
 .lab-card p {
-    font-size: 12px;
+    font-size: 15px;
+    line-height: 1.7;
     color: var(--silver);
-    min-height: 60px;
+    min-height: 75px;
 }
 
 .lab-card > a {
     display: inline-block;
     margin-top: 15px;
     color: var(--orange);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 800;
 }
 
@@ -495,11 +487,11 @@ a {
 .workshop-toolbar {
     display: flex;
     justify-content: space-between;
-    padding: 17px 22px;
+    padding: 19px 22px;
     background: var(--panel);
     border-bottom: 1px solid var(--border);
     color: var(--silver);
-    font-size: 10px;
+    font-size: 13px;
     letter-spacing: 1.5px;
 }
 
@@ -526,14 +518,15 @@ a {
 .component-panel h4,
 .properties-panel h4 {
     color: var(--orange);
-    font-size: 10px;
+    font-size: 13px;
     letter-spacing: 1px;
     margin-bottom: 20px;
 }
 
 .component-panel p,
 .properties-panel p {
-    font-size: 11px;
+    font-size: 13px;
+    line-height: 1.6;
     color: var(--silver);
     margin: 15px 0;
 }
@@ -557,7 +550,7 @@ a {
 .workshop-viewport > span,
 .workshop-viewport > p {
     color: var(--silver);
-    font-size: 9px;
+    font-size: 12px;
     letter-spacing: 2px;
 }
 
@@ -570,9 +563,9 @@ a {
 }
 
 .workshop-footer {
-    padding: 17px;
+    padding: 19px;
     text-align: center;
-    font-size: 10px;
+    font-size: 13px;
     letter-spacing: 2px;
     color: var(--silver);
     border-top: 1px solid var(--border);
@@ -586,22 +579,23 @@ a {
 .workshop-note {
     max-width: 1280px;
     margin: 25px auto 0;
-    padding: 18px;
+    padding: 20px;
     border-left: 3px solid var(--orange);
     background: var(--panel);
 }
 
 .workshop-note span {
     color: var(--orange);
-    font-size: 10px;
+    font-size: 13px;
     font-weight: 800;
     letter-spacing: 1px;
 }
 
 .workshop-note p {
     color: var(--silver);
-    font-size: 12px;
-    margin-top: 6px;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-top: 8px;
 }
 
 
@@ -616,8 +610,8 @@ a {
 }
 
 .library-card {
-    padding: 25px;
-    min-height: 180px;
+    padding: 28px;
+    min-height: 190px;
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -631,18 +625,20 @@ a {
 
 .library-card span {
     color: var(--orange);
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 800;
 }
 
 .library-card h3 {
     margin: 16px 0 8px;
-    font-size: 18px;
+    font-size: 22px;
+    line-height: 1.35;
 }
 
 .library-card p {
     color: var(--silver);
-    font-size: 12px;
+    font-size: 15px;
+    line-height: 1.7;
 }
 
 
@@ -662,7 +658,7 @@ a {
 
 .about-content h2 {
     max-width: 700px;
-    font-size: clamp(30px, 4vw, 48px);
+    font-size: clamp(36px, 4vw, 52px);
     line-height: 1.2;
     margin: 18px 0;
 }
@@ -670,7 +666,8 @@ a {
 .about-content > p {
     color: var(--silver);
     max-width: 700px;
-    font-size: 14px;
+    font-size: 17px;
+    line-height: 1.8;
 }
 
 .principles {
@@ -687,13 +684,14 @@ a {
 
 .principles h3 {
     color: var(--orange);
-    font-size: 11px;
+    font-size: 15px;
     letter-spacing: 1px;
 }
 
 .principles p {
     color: var(--silver);
-    font-size: 12px;
+    font-size: 15px;
+    line-height: 1.7;
     margin-top: 10px;
 }
 
@@ -708,13 +706,13 @@ a {
 }
 
 .footer h2 {
-    font-size: 24px;
+    font-size: 28px;
     letter-spacing: 2px;
 }
 
 .footer > div:first-child p {
     color: var(--orange);
-    font-size: 9px;
+    font-size: 12px;
     letter-spacing: 2px;
     margin-top: 5px;
 }
@@ -728,7 +726,7 @@ a {
 
 .footer-links a {
     color: var(--silver);
-    font-size: 12px;
+    font-size: 15px;
     transition: color 0.2s ease;
 }
 
@@ -743,7 +741,7 @@ a {
     justify-content: space-between;
     gap: 15px;
     color: var(--muted);
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .footer-bottom span {
@@ -773,6 +771,10 @@ a {
     .hero-content {
         grid-template-columns: 220px 1fr;
         gap: 25px;
+    }
+
+    .hero h1 {
+        font-size: clamp(42px, 5vw, 60px);
     }
 
     .hero-visual {
@@ -811,6 +813,10 @@ a {
         scroll-padding-top: 70px;
     }
 
+    body {
+        font-size: 15px;
+    }
+
     .navbar {
         min-height: 60px;
         padding: 10px 5%;
@@ -819,15 +825,15 @@ a {
     }
 
     .logo {
-        font-size: 19px;
+        font-size: 20px;
     }
 
     .logo-icon {
-        font-size: 26px;
+        font-size: 27px;
     }
 
     .logo small {
-        font-size: 7px;
+        font-size: 8px;
     }
 
     .nav-links {
@@ -840,13 +846,13 @@ a {
     }
 
     .nav-links a {
-        font-size: 10px;
+        font-size: 12px;
         white-space: nowrap;
     }
 
     .nav-button {
         padding: 9px 12px;
-        font-size: 9px;
+        font-size: 11px;
     }
 
     .hero {
@@ -864,15 +870,26 @@ a {
     }
 
     .hero h1 {
-        font-size: 42px;
+        font-size: clamp(42px, 10vw, 54px);
+        letter-spacing: -1.5px;
     }
 
     .hero-info > p {
+        font-size: 16px;
+    }
+
+    .eyebrow {
+        font-size: 12px;
+    }
+
+    .button,
+    .secondary-button {
         font-size: 13px;
     }
 
     .hero-caption {
         margin-top: 30px;
+        font-size: 11px;
     }
 
     .hero-visual {
@@ -898,7 +915,7 @@ a {
     .visual-label,
     .visual-footer {
         padding: 13px;
-        font-size: 7px;
+        font-size: 9px;
     }
 
     .section {
@@ -906,11 +923,11 @@ a {
     }
 
     .section-heading h2 {
-        font-size: 30px;
+        font-size: clamp(30px, 8vw, 38px);
     }
 
     .section-heading > p {
-        font-size: 13px;
+        font-size: 15px;
     }
 
     .lab-container {
@@ -923,6 +940,14 @@ a {
 
     .lab-image {
         height: 190px;
+    }
+
+    .lab-card h3 {
+        font-size: 23px;
+    }
+
+    .lab-card p {
+        font-size: 15px;
     }
 
     .workshop-section {
@@ -944,7 +969,7 @@ a {
     }
 
     .workshop-toolbar {
-        font-size: 8px;
+        font-size: 10px;
         padding: 14px;
     }
 
@@ -953,12 +978,16 @@ a {
     }
 
     .workshop-footer {
-        font-size: 8px;
+        font-size: 10px;
         letter-spacing: 1px;
     }
 
     .workshop-footer span {
         margin: 0 5px;
+    }
+
+    .workshop-note p {
+        font-size: 14px;
     }
 
     .library-container {
@@ -969,23 +998,47 @@ a {
         min-height: 145px;
     }
 
+    .library-card h3 {
+        font-size: 21px;
+    }
+
+    .library-card p {
+        font-size: 14px;
+    }
+
     .principles {
         grid-template-columns: 1fr;
         gap: 20px;
     }
 
     .about-content h2 {
-        font-size: 34px;
+        font-size: 36px;
+    }
+
+    .about-content > p {
+        font-size: 16px;
+    }
+
+    .principles h3 {
+        font-size: 14px;
+    }
+
+    .principles p {
+        font-size: 14px;
     }
 
     .footer-links {
         gap: 16px;
     }
 
-    .footer-bottom {
-        flex-direction: column;
+    .footer-links a {
+        font-size: 14px;
     }
 
+    .footer-bottom {
+        flex-direction: column;
+        font-size: 11px;
+    }
 }
 
 
