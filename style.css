@@ -391,7 +391,7 @@ a {
 }
 
 .section-heading h2 {
-    font-size: clamp(28px, 3vw, 40px);
+    font-size: clamp(32px, 3.5vw, 46px);
     margin: 13px 0;
     letter-spacing: -1px;
 }
