@@ -1097,7 +1097,9 @@ a {
 .ring-outer {
     width: 78%;
     aspect-ratio: 1;
-   
+    animation: outerRingRotation 45s linear infinite;
+}
+
 .ring-outer::after {
     content: "";
     position: absolute;
@@ -1114,8 +1116,6 @@ a {
         #000 calc(100% - 1px)
     );
     pointer-events: none;
-}
-
 }
 
 .ring-inner {
