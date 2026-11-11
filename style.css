@@ -1283,3 +1283,28 @@ a {
 
 }
 
+/* =========================================
+   KINETRA v0.3 — GEAR BEARING HUBS
+========================================= */
+
+.gear::after {
+    content: "";
+    position: absolute;
+    width: 0.18em;
+    height: 0.18em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 35% 30%,
+        #D9DEE0,
+        #7F898E 45%,
+        #343D42 80%
+    );
+    border: 2px solid var(--orange);
+    box-shadow:
+        0 0 8px rgba(242, 140, 40, 0.5),
+        inset 0 0 4px rgba(255, 255, 255, 0.25);
+}
+
