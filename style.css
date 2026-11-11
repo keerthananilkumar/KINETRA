@@ -314,7 +314,9 @@ a {
     color: var(--orange);
     line-height: 1;
     text-shadow: 0 0 30px rgba(242, 140, 40, 0.35);
-   filter: drop-shadow(0 8px 6px rgba(0, 0, 0, 0.65));
+   filter:
+    drop-shadow(0 12px 5px rgba(0, 0, 0, 0.95))
+    drop-shadow(0 4px 12px rgba(242, 140, 40, 0.18));
     animation: rotateGear 18s linear infinite;
 }
 
