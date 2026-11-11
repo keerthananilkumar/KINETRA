@@ -1212,12 +1212,12 @@ a {
     content: "";
     position: absolute;
     width: 55px;
-    height: 1px;
+    height: 7px;
     right: 100%;
-    top: 50%;
+    top: calc(50% - 3px);
     background:
-        radial-gradient(circle at 0% 50%, var(--orange) 0 3px, transparent 3.5px),
-        linear-gradient(var(--orange), var(--orange));
+        radial-gradient(circle, var(--orange) 0 2px, transparent 2.5px) left center / 7px 7px no-repeat,
+        linear-gradient(var(--orange), var(--orange)) right center / calc(100% - 7px) 1px no-repeat;
     filter: drop-shadow(0 0 3px rgba(242, 140, 40, 0.7));
     opacity: 0.8;
     transform: rotate(-25deg);
