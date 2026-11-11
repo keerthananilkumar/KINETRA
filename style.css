@@ -1190,3 +1190,31 @@ a {
     transform: rotate(-25deg);
     transform-origin: right center;
 }
+
+/* COMPONENT IDENTIFICATION LINES */
+
+.label-drive::after {
+    content: "";
+    position: absolute;
+    width: 55px;
+    height: 1px;
+    left: 100%;
+    top: 50%;
+    background: var(--orange);
+    opacity: 0.65;
+    transform: rotate(25deg);
+    transform-origin: left center;
+}
+
+.label-output::before {
+    content: "";
+    position: absolute;
+    width: 55px;
+    height: 1px;
+    right: 100%;
+    top: 50%;
+    background: var(--orange);
+    opacity: 0.65;
+    transform: rotate(-25deg);
+    transform-origin: right center;
+}
