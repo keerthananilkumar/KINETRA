@@ -5,63 +5,355 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Site Verification -->
-    <meta name="google-site-verification" content="Efwweejjd9JTdmXOZYGpjYvYVA_6XfXnoKUVuei2CU4">
-
-    <!-- Primary SEO -->
     <title>KINETRA | Interactive Mechanical Engineering Playground</title>
 
-    <meta name="description" content="Explore KINETRA, a browser-based mechanical engineering playground featuring mechanisms, gear systems, robotics, machine components and interactive engineering learning.">
-
-    <meta name="keywords" content="KINETRA, mechanical engineering, engineering playground, mechanism lab, gear systems, robotics, machine design, kinematics, engineering simulations">
-
+    <meta name="description" content="Explore KINETRA, an interactive mechanical engineering playground featuring mechanisms, gear systems, robotics and engineering simulations.">
+    <meta name="keywords" content="KINETRA, mechanical engineering, four bar mechanism, mechanism simulation, kinematics, robotics">
     <meta name="author" content="KINETRA">
     <meta name="robots" content="index, follow">
 
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://keerthananilkumar.github.io/KINETRA/">
 
-    <!-- Open Graph / Social Sharing -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="KINETRA | Engineering in Motion">
     <meta property="og:description" content="Explore machines, experiment with mechanisms and discover the engineering behind movement.">
     <meta property="og:url" content="https://keerthananilkumar.github.io/KINETRA/">
     <meta property="og:site_name" content="KINETRA">
     <meta property="og:image" content="https://keerthananilkumar.github.io/KINETRA/kinetra-preview.png">
-    <meta property="og:image:width" content="1536">
-    <meta property="og:image:height" content="1024">
-    <meta property="og:image:alt" content="KINETRA - Engineering in Motion">
 
-    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="KINETRA | Engineering in Motion">
-    <meta name="twitter:description" content="A browser-based playground for mechanical engineering exploration.">
+    <meta name="twitter:description" content="A browser-based playground for mechanical engineering.">
     <meta name="twitter:image" content="https://keerthananilkumar.github.io/KINETRA/kinetra-preview.png">
 
-    <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- KINETRA Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
 
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YXQQDBSD3S"></script>
-
     <script>
         window.dataLayer = window.dataLayer || [];
-
         function gtag() {
             dataLayer.push(arguments);
         }
-
         gtag('js', new Date());
         gtag('config', 'G-YXQQDBSD3S');
     </script>
 
+    <style>
+        /* =====================================
+           KINETRA — FOUR BAR MECHANISM LAB
+        ===================================== */
+
+        #mechanism-lab {
+            max-width: 100%;
+            padding: 100px 5%;
+            background: #14191C;
+        }
+
+        .mechanism-heading,
+        .mechanism-workspace {
+            max-width: 1280px;
+            margin: auto;
+        }
+
+        .mechanism-heading {
+            margin-bottom: 35px;
+        }
+
+        .mechanism-heading h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            margin: 12px 0;
+        }
+
+        .mechanism-heading p {
+            color: #A7ADB1;
+            max-width: 700px;
+        }
+
+        .mechanism-workspace {
+            display: grid;
+            grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.8fr);
+            gap: 20px;
+        }
+
+        .simulation-panel,
+        .control-panel {
+            background: #20272B;
+            border: 1px solid rgba(167,173,177,0.18);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .simulation-toolbar {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 17px 20px;
+            background: #252E33;
+            border-bottom: 1px solid rgba(167,173,177,0.18);
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            color: #A7ADB1;
+        }
+
+        .simulation-toolbar span:first-child {
+            color: #F28C28;
+            font-weight: 800;
+        }
+
+        .simulation-stage {
+            position: relative;
+            min-height: 390px;
+            display: flex;
+            align-items: center;
+            background-color: #171D20;
+            background-image:
+                linear-gradient(rgba(167,173,177,0.055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(167,173,177,0.055) 1px, transparent 1px);
+            background-size: 25px 25px;
+        }
+
+        .mechanism-svg {
+            width: 100%;
+            height: auto;
+            overflow: visible;
+        }
+
+        .ground-link {
+            stroke: #7C898F;
+            stroke-width: 13;
+            stroke-linecap: round;
+        }
+
+        .crank-link {
+            stroke: #F28C28;
+            stroke-width: 11;
+            stroke-linecap: round;
+            filter: drop-shadow(0 0 7px rgba(242,140,40,0.4));
+        }
+
+        .coupler-link {
+            stroke: #D4DADD;
+            stroke-width: 12;
+            stroke-linecap: round;
+            filter: drop-shadow(0 0 5px rgba(212,218,221,0.25));
+        }
+
+        .rocker-link {
+            stroke: #A7ADB1;
+            stroke-width: 11;
+            stroke-linecap: round;
+            filter: drop-shadow(0 0 5px rgba(167,173,177,0.25));
+        }
+
+        .joint {
+            fill: #293238;
+            stroke: #F28C28;
+            stroke-width: 4;
+        }
+
+        .fixed-joint {
+            fill: #171D20;
+            stroke: #D4DADD;
+            stroke-width: 4;
+        }
+
+        .joint-center {
+            fill: #F28C28;
+        }
+
+        .svg-label {
+            fill: #A7ADB1;
+            font-size: 13px;
+            font-family: Arial, sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .svg-dimension {
+            fill: #F28C28;
+            font-size: 12px;
+            font-family: Arial, sans-serif;
+        }
+
+        .simulation-status {
+            padding: 12px 18px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            border-top: 1px solid rgba(167,173,177,0.15);
+            color: #A7ADB1;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .status-indicator {
+            color: #F28C28;
+        }
+
+        .control-panel {
+            padding: 22px;
+        }
+
+        .control-panel h3 {
+            color: #F28C28;
+            font-size: 16px;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .control-description {
+            color: #929BA0;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .slider-control {
+            margin-bottom: 23px;
+        }
+
+        .slider-heading {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 9px;
+            font-size: 13px;
+            color: #D4DADD;
+        }
+
+        .slider-heading output {
+            color: #F28C28;
+            font-weight: 800;
+        }
+
+        .slider-control input {
+            width: 100%;
+            accent-color: #F28C28;
+            cursor: pointer;
+        }
+
+        .slider-range {
+            display: flex;
+            justify-content: space-between;
+            color: #707C82;
+            font-size: 10px;
+        }
+
+        .sim-buttons {
+            display: flex;
+            gap: 9px;
+            margin-top: 28px;
+        }
+
+        .sim-buttons button {
+            flex: 1;
+            padding: 12px 8px;
+            border: 1px solid rgba(167,173,177,0.25);
+            border-radius: 4px;
+            background: #293238;
+            color: #F2F2F0;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .sim-buttons button.primary {
+            background: #F28C28;
+            color: #171B1E;
+            border-color: #F28C28;
+        }
+
+        .sim-buttons button:hover {
+            border-color: #F28C28;
+            transform: translateY(-2px);
+        }
+
+        .measurement-panel {
+            margin-top: 22px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(167,173,177,0.18);
+        }
+
+        .measurement-panel h4 {
+            color: #A7ADB1;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+        }
+
+        .measurement-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .measurement-box {
+            background: #171D20;
+            border: 1px solid rgba(167,173,177,0.12);
+            border-radius: 5px;
+            padding: 12px;
+        }
+
+        .measurement-box span {
+            display: block;
+            color: #929BA0;
+            font-size: 10px;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .measurement-box strong {
+            color: #F28C28;
+            font-size: 18px;
+        }
+
+        .mechanism-note {
+            margin-top: 18px;
+            padding: 13px;
+            border-left: 2px solid #F28C28;
+            background: #171D20;
+            color: #929BA0;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .mechanism-note strong {
+            color: #F28C28;
+        }
+
+        @media (max-width: 900px) {
+            .mechanism-workspace {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            #mechanism-lab {
+                padding: 70px 5%;
+            }
+
+            .simulation-stage {
+                min-height: 260px;
+            }
+
+            .simulation-toolbar {
+                font-size: 9px;
+                padding: 14px;
+            }
+
+            .control-panel {
+                padding: 18px;
+            }
+
+            .simulation-status {
+                font-size: 9px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -80,310 +372,517 @@
         <nav class="nav-links">
             <a href="#">Home</a>
             <a href="#labs">Labs</a>
+            <a href="#mechanism-lab">Mechanism Lab</a>
             <a href="#workshop">Workshop</a>
             <a href="#library">Library</a>
             <a href="#about">About</a>
         </nav>
 
-        <a href="#workshop" class="nav-button">
-            Launch Workshop ↗
+        <a href="#mechanism-lab" class="nav-button">
+            Launch Lab ↗
         </a>
     </header>
 
 
-    <!-- HERO DASHBOARD -->
-
     <main>
 
-    <section class="hero">
+        <!-- HERO SECTION -->
 
-        <div class="hero-content">
+        <section class="hero">
+            <div class="hero-content">
 
-            <div class="hero-info">
-                <span class="eyebrow">MECHANICAL ENGINEERING PLAYGROUND</span>
+                <div class="hero-info">
+                    <span class="eyebrow">MECHANICAL ENGINEERING PLAYGROUND</span>
 
-                <h1>
-                    Understand the motion.
-                    <span>Master the mechanics.</span>
-                </h1>
+                    <h1>
+                        Understand the motion.
+                        <span>Master the mechanics.</span>
+                    </h1>
+
+                    <p>
+                        Explore machines. Experiment with mechanisms.
+                        Discover the engineering behind movement.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#labs" class="button">Explore Labs →</a>
+                        <a href="#mechanism-lab" class="secondary-button">Launch Simulation</a>
+                    </div>
+
+                    <div class="hero-caption">
+                        <span class="status-dot"></span>
+                        ENGINEERING IN MOTION
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+
+                    <div class="visual-label">
+                        <span>01 / MECHANICAL SYSTEMS</span>
+                        <span>3D SHOWCASE</span>
+                    </div>
+
+                    <div class="mechanical-display">
+                        <div class="axis-line axis-horizontal"></div>
+                        <div class="axis-line axis-vertical"></div>
+
+                        <div class="technical-ring ring-outer"></div>
+                        <div class="technical-ring ring-inner"></div>
+
+                        <div class="gear gear-one">⚙</div>
+                        <div class="gear gear-two">⚙</div>
+                        <div class="gear gear-three">⚙</div>
+
+                        <div class="crosshair"></div>
+
+                        <div class="component-label label-drive">
+                            DRIVE GEAR / 01
+                        </div>
+
+                        <div class="component-label label-output">
+                            OUTPUT GEAR / 02
+                        </div>
+
+                        <div class="measurement measurement-top">
+                            Ø 120 mm
+                        </div>
+
+                        <div class="measurement measurement-side">
+                            45°
+                        </div>
+                    </div>
+
+                    <div class="visual-footer">
+                        <span>MECHANISMS</span>
+                        <span>TRANSMISSION</span>
+                        <span>ROBOTICS</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- FEATURED LABS -->
+
+        <section class="section" id="labs">
+
+            <div class="section-heading">
+                <span class="eyebrow">EXPLORE THE ENVIRONMENT</span>
+                <h2>Four labs. Infinite possibilities.</h2>
+                <p>
+                    Explore the systems that make machines move,
+                    transmit power and perform work.
+                </p>
+            </div>
+
+            <div class="lab-container">
+
+                <article class="lab-card">
+                    <span class="lab-number">01 / LAB</span>
+                    <div class="lab-image mechanism-image"></div>
+                    <h3>Mechanism Lab</h3>
+                    <p>Explore linkages, velocity, acceleration and mechanical motion.</p>
+                    <a href="#mechanism-lab">Launch Simulation ↗</a>
+                </article>
+
+                <article class="lab-card">
+                    <span class="lab-number">02 / LAB</span>
+                    <div class="lab-image gear-image"></div>
+                    <h3>Gear Lab</h3>
+                    <p>Discover gear systems, transmission ratios and rotational motion.</p>
+                    <a href="#labs">Coming Soon ↗</a>
+                </article>
+
+                <article class="lab-card">
+                    <span class="lab-number">03 / LAB</span>
+                    <div class="lab-image robotics-image"></div>
+                    <h3>Robotics Lab</h3>
+                    <p>Experiment with robotic arms, joints and kinematics.</p>
+                    <a href="#labs">Coming Soon ↗</a>
+                </article>
+
+                <article class="lab-card">
+                    <span class="lab-number">04 / LAB</span>
+                    <div class="lab-image machine-image"></div>
+                    <h3>Machine Lab</h3>
+                    <p>Explore shafts, bearings, springs and machine components.</p>
+                    <a href="#labs">Coming Soon ↗</a>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- FOUR BAR MECHANISM LAB -->
+
+        <section id="mechanism-lab">
+
+            <div class="mechanism-heading">
+                <span class="eyebrow">KINETRA / INTERACTIVE SIMULATION 01</span>
+                <h2>Four-Bar Mechanism Lab</h2>
+                <p>
+                    Explore the kinematics of a four-bar linkage.
+                    Adjust link dimensions, rotate the input crank
+                    and observe the movement of the mechanism in real time.
+                </p>
+            </div>
+
+            <div class="mechanism-workspace">
+
+                <!-- SIMULATION VIEWPORT -->
+
+                <div class="simulation-panel">
+
+                    <div class="simulation-toolbar">
+                        <span>⚙ LIVE MECHANISM SIMULATION</span>
+                        <span>2D KINEMATICS / MODE 01</span>
+                    </div>
+
+                    <div class="simulation-stage">
+
+                        <svg class="mechanism-svg"
+                             viewBox="0 0 620 420"
+                             role="img"
+                             aria-label="Interactive four-bar linkage mechanism">
+
+                            <line id="groundLink"
+                                  class="ground-link"
+                                  x1="180" y1="280"
+                                  x2="440" y2="280"/>
+
+                            <line id="crankLink"
+                                  class="crank-link"
+                                  x1="180" y1="280"
+                                  x2="255" y2="280"/>
+
+                            <line id="couplerLink"
+                                  class="coupler-link"
+                                  x1="255" y1="280"
+                                  x2="400" y2="180"/>
+
+                            <line id="rockerLink"
+                                  class="rocker-link"
+                                  x1="440" y1="280"
+                                  x2="400" y2="180"/>
+
+                            <circle class="fixed-joint"
+                                    cx="180" cy="280" r="12"/>
+
+                            <circle id="pivotO4"
+                                    class="fixed-joint"
+                                    cx="440" cy="280" r="12"/>
+
+                            <circle id="jointA"
+                                    class="joint"
+                                    cx="255" cy="280" r="10"/>
+
+                            <circle id="jointB"
+                                    class="joint"
+                                    cx="400" cy="180" r="10"/>
+
+                            <circle class="joint-center"
+                                    cx="180" cy="280" r="3"/>
+
+                            <circle id="centerO4"
+                                    class="joint-center"
+                                    cx="440" cy="280" r="3"/>
+
+                            <text x="155" y="315" class="svg-label">O₂</text>
+                            <text id="labelO4" x="430" y="315" class="svg-label">O₄</text>
+
+                            <text id="labelA" x="255" y="260" class="svg-label">A</text>
+                            <text id="labelB" x="400" y="160" class="svg-label">B</text>
+
+                            <text x="200" y="385" class="svg-dimension">
+                                INPUT CRANK
+                            </text>
+
+                            <text x="350" y="385" class="svg-dimension">
+                                OUTPUT ROCKER
+                            </text>
+
+                        </svg>
+
+                    </div>
+
+                    <div class="simulation-status">
+                        <span class="status-indicator" id="mechanismStatus">
+                            ● MECHANISM READY
+                        </span>
+                        <span id="angleStatus">INPUT: 0.0°</span>
+                    </div>
+
+                </div>
+
+
+                <!-- CONTROL PANEL -->
+
+                <aside class="control-panel">
+
+                    <h3>PARAMETER CONTROL</h3>
+
+                    <p class="control-description">
+                        Modify the dimensions of the linkage.
+                    </p>
+
+                    <div class="slider-control">
+                        <div class="slider-heading">
+                            <label for="groundLength">Ground Link (L₁)</label>
+                            <output id="groundValue">260 mm</output>
+                        </div>
+                        <input type="range" id="groundLength"
+                               min="220" max="320" value="260">
+                        <div class="slider-range">
+                            <span>220 mm</span>
+                            <span>320 mm</span>
+                        </div>
+                    </div>
+
+                    <div class="slider-control">
+                        <div class="slider-heading">
+                            <label for="crankLength">Crank (L₂)</label>
+                            <output id="crankValue">75 mm</output>
+                        </div>
+                        <input type="range" id="crankLength"
+                               min="40" max="100" value="75">
+                        <div class="slider-range">
+                            <span>40 mm</span>
+                            <span>100 mm</span>
+                        </div>
+                    </div>
+
+                    <div class="slider-control">
+                        <div class="slider-heading">
+                            <label for="couplerLength">Coupler (L₃)</label>
+                            <output id="couplerValue">185 mm</output>
+                        </div>
+                        <input type="range" id="couplerLength"
+                               min="120" max="220" value="185">
+                        <div class="slider-range">
+                            <span>120 mm</span>
+                            <span>220 mm</span>
+                        </div>
+                    </div>
+
+                    <div class="slider-control">
+                        <div class="slider-heading">
+                            <label for="rockerLength">Rocker (L₄)</label>
+                            <output id="rockerValue">160 mm</output>
+                        </div>
+                        <input type="range" id="rockerLength"
+                               min="110" max="210" value="160">
+                        <div class="slider-range">
+                            <span>110 mm</span>
+                            <span>210 mm</span>
+                        </div>
+                    </div>
+
+                    <div class="sim-buttons">
+                        <button class="primary" id="playButton">▶ PLAY</button>
+                        <button id="resetButton">↺ RESET</button>
+                    </div>
+
+                    <div class="measurement-panel">
+
+                        <h4>LIVE MEASUREMENTS</h4>
+
+                        <div class="measurement-grid">
+
+                            <div class="measurement-box">
+                                <span>INPUT ANGLE</span>
+                                <strong id="inputAngle">0.0°</strong>
+                            </div>
+
+                            <div class="measurement-box">
+                                <span>COUPLER ANGLE</span>
+                                <strong id="couplerAngle">--</strong>
+                            </div>
+
+                            <div class="measurement-box">
+                                <span>OUTPUT ANGLE</span>
+                                <strong id="outputAngle">--</strong>
+                            </div>
+
+                            <div class="measurement-box">
+                                <span>GROUND LENGTH</span>
+                                <strong id="groundReadout">260 mm</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="mechanism-note">
+                        <strong>ENGINEERING NOTE</strong><br>
+                        The four-bar linkage consists of a fixed link,
+                        input crank, coupler and output rocker.
+                        The mechanism position is calculated using
+                        circle-intersection geometry.
+                    </div>
+
+                </aside>
+
+            </div>
+        </section>
+
+
+        <!-- WORKSHOP -->
+
+        <section class="section workshop-section" id="workshop">
+
+            <div class="section-heading">
+                <span class="eyebrow">YOUR ENGINEERING WORKSPACE</span>
+                <h2>Build. Assemble. Simulate.</h2>
+                <p>
+                    A browser-based environment where mechanical
+                    ideas become interactive assemblies.
+                </p>
+            </div>
+
+            <div class="workshop-preview">
+
+                <div class="workshop-toolbar">
+                    <span>⚙ KINETRA WORKSHOP</span>
+                    <span>ASSEMBLY PREVIEW</span>
+                </div>
+
+                <div class="workshop-interface">
+
+                    <aside class="component-panel">
+                        <h4>COMPONENTS</h4>
+                        <p>Shafts</p>
+                        <p>Gears</p>
+                        <p>Bearings</p>
+                        <p>Joints</p>
+                    </aside>
+
+                    <div class="workshop-viewport">
+                        <span>3D ASSEMBLY VIEWPORT</span>
+                        <div class="viewport-symbol">⚙</div>
+                        <p>ENGINEERING WORKSPACE</p>
+                    </div>
+
+                    <aside class="properties-panel">
+                        <h4>PROPERTIES</h4>
+                        <p>Position</p>
+                        <p>Rotation</p>
+                        <p>Alignment</p>
+                        <p>Joint Type</p>
+                    </aside>
+
+                </div>
+
+                <div class="workshop-footer">
+                    BUILD <span>→</span>
+                    ASSEMBLE <span>→</span>
+                    SIMULATE
+                </div>
+
+            </div>
+
+            <div class="workshop-note">
+                <span>UNDER DEVELOPMENT</span>
+                <p>
+                    The KINETRA Workshop is under development.
+                    Its interactive assembly tools will arrive in future releases.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- ENGINEERING LIBRARY -->
+
+        <section class="section" id="library">
+
+            <div class="section-heading">
+                <span class="eyebrow">ENGINEERING KNOWLEDGE BASE</span>
+                <h2>Understand the science behind the motion.</h2>
+                <p>
+                    Explore mechanical engineering concepts,
+                    equations and technical explanations.
+                </p>
+            </div>
+
+            <div class="library-container">
+
+                <div class="library-card">
+                    <span>01</span>
+                    <h3>Kinematics</h3>
+                    <p>Mechanisms, velocity and acceleration.</p>
+                </div>
+
+                <div class="library-card">
+                    <span>02</span>
+                    <h3>Machine Design</h3>
+                    <p>Gears, shafts, bearings and springs.</p>
+                </div>
+
+                <div class="library-card">
+                    <span>03</span>
+                    <h3>Thermal Engineering</h3>
+                    <p>Thermodynamics and heat transfer.</p>
+                </div>
+
+                <div class="library-card">
+                    <span>04</span>
+                    <h3>Robotics</h3>
+                    <p>Joint systems and robot kinematics.</p>
+                </div>
+
+                <div class="library-card">
+                    <span>05</span>
+                    <h3>Manufacturing</h3>
+                    <p>Machining and manufacturing processes.</p>
+                </div>
+
+                <div class="library-card">
+                    <span>06</span>
+                    <h3>Engineering Mathematics</h3>
+                    <p>Equations and numerical methods.</p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ABOUT -->
+
+        <section class="section about-section" id="about">
+
+            <div class="about-content">
+                <span class="eyebrow">ABOUT KINETRA</span>
+
+                <h2>Engineering is better when you can experience it.</h2>
 
                 <p>
-                    Explore machines. Experiment with mechanisms.
-                    Discover the engineering behind movement.
+                    KINETRA is a browser-based mechanical engineering
+                    playground built to make mechanical systems easier
+                    to understand through visual exploration,
+                    interactive simulations and practical engineering knowledge.
                 </p>
 
-                <div class="hero-buttons">
-                    <a href="#labs" class="button">
-                        Explore Labs →
-                    </a>
+                <div class="principles">
+
+                    <div>
+                        <h3>01 / EXPLORE</h3>
+                        <p>Discover how mechanical systems work.</p>
+                    </div>
+
+                    <div>
+                        <h3>02 / EXPERIMENT</h3>
+                        <p>Change parameters and observe their effects.</p>
+                    </div>
+
+                    <div>
+                        <h3>03 / UNDERSTAND</h3>
+                        <p>Connect practical motion with engineering theory.</p>
+                    </div>
 
-                    <a href="#workshop" class="secondary-button">
-                        Enter Workshop
-                    </a>
-                </div>
-
-                <div class="hero-caption">
-                    <span class="status-dot"></span>
-                    ENGINEERING IN MOTION
-                </div>
-            </div>
-
-            <div class="hero-visual">
-
-                <div class="visual-label">
-                    <span>01 / MECHANICAL SYSTEMS</span>
-                    <span>3D SHOWCASE</span>
-                </div>
-
-<div class="mechanical-display">
-
-    <!-- ENGINEERING REFERENCE AXES -->
-    <div class="axis-line axis-horizontal"></div>
-    <div class="axis-line axis-vertical"></div>
-
-    <!-- TECHNICAL MEASUREMENT RINGS -->
-    <div class="technical-ring ring-outer"></div>
-    <div class="technical-ring ring-inner"></div>
-
-    <!-- MECHANICAL GEAR ASSEMBLY -->
-    <div class="gear gear-one">⚙</div>
-    <div class="gear gear-two">⚙</div>
-    <div class="gear gear-three">⚙</div>
-
-    <!-- CENTRAL CROSSHAIR -->
-    <div class="crosshair"></div>
-
-    <!-- ENGINEERING ANNOTATIONS -->
-    <div class="component-label label-drive">
-        DRIVE GEAR / 01
-    </div>
-
-    <div class="component-label label-output">
-        OUTPUT GEAR / 02
-    </div>
-
-    <div class="measurement measurement-top">
-        Ø 120 mm
-    </div>
-
-    <div class="measurement measurement-side">
-        45°
-    </div>
-
-</div>
-
-
-    </section>
-
-
-    <!-- FEATURED LABS -->
-
-    <section class="section" id="labs">
-
-        <div class="section-heading">
-            <span class="eyebrow">EXPLORE THE ENVIRONMENT</span>
-            <h2>Four labs. Infinite possibilities.</h2>
-            <p>
-                Explore the systems that make machines move,
-                transmit power and perform work.
-            </p>
-        </div>
-
-        <div class="lab-container">
-
-            <article class="lab-card">
-                <span class="lab-number">01 / LAB</span>
-                <div class="lab-image mechanism-image"></div>
-                <h3>Mechanism Lab</h3>
-                <p>Explore linkages, velocity, acceleration and mechanical motion.</p>
-                <a href="#labs">Explore Lab ↗</a>
-            </article>
-
-            <article class="lab-card">
-                <span class="lab-number">02 / LAB</span>
-                <div class="lab-image gear-image"></div>
-                <h3>Gear Lab</h3>
-                <p>Discover gear systems, transmission ratios and rotational motion.</p>
-                <a href="#labs">Explore Lab ↗</a>
-            </article>
-
-            <article class="lab-card">
-                <span class="lab-number">03 / LAB</span>
-                <div class="lab-image robotics-image"></div>
-                <h3>Robotics Lab</h3>
-                <p>Experiment with robotic arms, joints and kinematics.</p>
-                <a href="#labs">Explore Lab ↗</a>
-            </article>
-
-            <article class="lab-card">
-                <span class="lab-number">04 / LAB</span>
-                <div class="lab-image machine-image"></div>
-                <h3>Machine Lab</h3>
-                <p>Explore shafts, bearings, springs and machine components.</p>
-                <a href="#labs">Explore Lab ↗</a>
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- WORKSHOP -->
-
-    <section class="section workshop-section" id="workshop">
-
-        <div class="section-heading">
-            <span class="eyebrow">YOUR ENGINEERING WORKSPACE</span>
-            <h2>Build. Assemble. Simulate.</h2>
-            <p>
-                A browser-based environment where mechanical
-                ideas become interactive assemblies.
-            </p>
-        </div>
-
-        <div class="workshop-preview">
-
-            <div class="workshop-toolbar">
-                <span>⚙ KINETRA WORKSHOP</span>
-                <span>ASSEMBLY PREVIEW</span>
-            </div>
-
-            <div class="workshop-interface">
-
-                <aside class="component-panel">
-                    <h4>COMPONENTS</h4>
-                    <p>Shafts</p>
-                    <p>Gears</p>
-                    <p>Bearings</p>
-                    <p>Joints</p>
-                </aside>
-
-                <div class="workshop-viewport">
-                    <span>3D ASSEMBLY VIEWPORT</span>
-                    <div class="viewport-symbol">⚙</div>
-                    <p>ENGINEERING WORKSPACE</p>
-                </div>
-
-                <aside class="properties-panel">
-                    <h4>PROPERTIES</h4>
-                    <p>Position</p>
-                    <p>Rotation</p>
-                    <p>Alignment</p>
-                    <p>Joint Type</p>
-                </aside>
-
-            </div>
-
-            <div class="workshop-footer">
-                BUILD <span>→</span>
-                ASSEMBLE <span>→</span>
-                SIMULATE
-            </div>
-
-        </div>
-
-        <div class="workshop-note">
-            <span>COMING IN FUTURE RELEASES</span>
-            <p>
-                The KINETRA Workshop is under development.
-                Its interactive assembly tools will arrive in future versions.
-            </p>
-        </div>
-
-    </section>
-
-
-    <!-- ENGINEERING LIBRARY -->
-
-    <section class="section" id="library">
-
-        <div class="section-heading">
-            <span class="eyebrow">ENGINEERING KNOWLEDGE BASE</span>
-            <h2>Understand the science behind the motion.</h2>
-            <p>
-                Explore mechanical engineering concepts,
-                equations and technical explanations.
-            </p>
-        </div>
-
-        <div class="library-container">
-
-            <div class="library-card">
-                <span>01</span>
-                <h3>Kinematics</h3>
-                <p>Mechanisms, velocity and acceleration.</p>
-            </div>
-
-            <div class="library-card">
-                <span>02</span>
-                <h3>Machine Design</h3>
-                <p>Gears, shafts, bearings and springs.</p>
-            </div>
-
-            <div class="library-card">
-                <span>03</span>
-                <h3>Thermal Engineering</h3>
-                <p>Thermodynamics and heat transfer.</p>
-            </div>
-
-            <div class="library-card">
-                <span>04</span>
-                <h3>Robotics</h3>
-                <p>Joint systems and robot kinematics.</p>
-            </div>
-
-            <div class="library-card">
-                <span>05</span>
-                <h3>Manufacturing</h3>
-                <p>Machining and manufacturing processes.</p>
-            </div>
-
-            <div class="library-card">
-                <span>06</span>
-                <h3>Engineering Mathematics</h3>
-                <p>Equations and numerical methods.</p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ABOUT -->
-
-    <section class="section about-section" id="about">
-
-        <div class="about-content">
-            <span class="eyebrow">ABOUT KINETRA</span>
-
-            <h2>Engineering is better when you can experience it.</h2>
-
-            <p>
-                KINETRA is a browser-based mechanical engineering
-                playground built to make mechanical systems easier
-                to understand through visual exploration,
-                interactive simulations and practical engineering knowledge.
-            </p>
-
-            <div class="principles">
-                <div>
-                    <h3>01 / EXPLORE</h3>
-                    <p>Discover how mechanical systems work.</p>
-                </div>
-
-                <div>
-                    <h3>02 / EXPERIMENT</h3>
-                    <p>Change parameters and observe their effects.</p>
-                </div>
-
-                <div>
-                    <h3>03 / UNDERSTAND</h3>
-                    <p>Connect practical motion with engineering theory.</p>
                 </div>
             </div>
-        </div>
-
-    </section>
+        </section>
 
     </main>
 
@@ -400,6 +899,7 @@
         <div class="footer-links">
             <a href="#">Home</a>
             <a href="#labs">Labs</a>
+            <a href="#mechanism-lab">Mechanism Lab</a>
             <a href="#workshop">Workshop</a>
             <a href="#library">Library</a>
             <a href="#about">About</a>
@@ -407,10 +907,328 @@
 
         <div class="footer-bottom">
             © 2026 KINETRA | Engineering in Motion
-            <span>VERSION 0.1</span>
+            <span>VERSION 0.3</span>
         </div>
 
     </footer>
+
+
+    <!-- FOUR BAR MECHANISM ENGINE -->
+
+    <script>
+    (() => {
+
+        const defaults = {
+            ground: 260,
+            crank: 75,
+            coupler: 185,
+            rocker: 160
+        };
+
+        const elements = {
+            ground: document.getElementById("groundLength"),
+            crank: document.getElementById("crankLength"),
+            coupler: document.getElementById("couplerLength"),
+            rocker: document.getElementById("rockerLength"),
+
+            groundValue: document.getElementById("groundValue"),
+            crankValue: document.getElementById("crankValue"),
+            couplerValue: document.getElementById("couplerValue"),
+            rockerValue: document.getElementById("rockerValue"),
+
+            groundLink: document.getElementById("groundLink"),
+            crankLink: document.getElementById("crankLink"),
+            couplerLink: document.getElementById("couplerLink"),
+            rockerLink: document.getElementById("rockerLink"),
+
+            pivotO4: document.getElementById("pivotO4"),
+            centerO4: document.getElementById("centerO4"),
+            jointA: document.getElementById("jointA"),
+            jointB: document.getElementById("jointB"),
+
+            labelA: document.getElementById("labelA"),
+            labelB: document.getElementById("labelB"),
+
+            inputAngle: document.getElementById("inputAngle"),
+            couplerAngle: document.getElementById("couplerAngle"),
+            outputAngle: document.getElementById("outputAngle"),
+            groundReadout: document.getElementById("groundReadout"),
+
+            angleStatus: document.getElementById("angleStatus"),
+            mechanismStatus: document.getElementById("mechanismStatus"),
+
+            playButton: document.getElementById("playButton"),
+            resetButton: document.getElementById("resetButton")
+        };
+
+        const O2 = { x: 180, y: 280 };
+
+        let angle = 0;
+        let playing = false;
+        let animationFrame = null;
+        let previousTime = 0;
+
+        function getParameters() {
+            return {
+                ground: Number(elements.ground.value),
+                crank: Number(elements.crank.value),
+                coupler: Number(elements.coupler.value),
+                rocker: Number(elements.rocker.value)
+            };
+        }
+
+        function circleIntersection(A, O4, rA, rO4) {
+
+            const dx = O4.x - A.x;
+            const dy = O4.y - A.y;
+            const distance = Math.hypot(dx, dy);
+
+            if (
+                distance > rA + rO4 ||
+                distance < Math.abs(rA - rO4) ||
+                distance === 0
+            ) {
+                return null;
+            }
+
+            const a = (
+                rA * rA -
+                rO4 * rO4 +
+                distance * distance
+            ) / (2 * distance);
+
+            const hSquared = rA * rA - a * a;
+
+            if (hSquared < -0.000001) {
+                return null;
+            }
+
+            const h = Math.sqrt(Math.max(0, hSquared));
+
+            const middleX = A.x + a * dx / distance;
+            const middleY = A.y + a * dy / distance;
+
+            const offsetX = -dy * h / distance;
+            const offsetY = dx * h / distance;
+
+            const pointOne = {
+                x: middleX + offsetX,
+                y: middleY + offsetY
+            };
+
+            const pointTwo = {
+                x: middleX - offsetX,
+                y: middleY - offsetY
+            };
+
+            // Select the upper assembly branch.
+            return pointOne.y < pointTwo.y ? pointOne : pointTwo;
+        }
+
+        function setLine(element, start, end) {
+            element.setAttribute("x1", start.x);
+            element.setAttribute("y1", start.y);
+            element.setAttribute("x2", end.x);
+            element.setAttribute("y2", end.y);
+        }
+
+        function setCircle(element, point) {
+            element.setAttribute("cx", point.x);
+            element.setAttribute("cy", point.y);
+        }
+
+        function degrees(radians) {
+            return radians * 180 / Math.PI;
+        }
+
+        function normalizeAngle(value) {
+            return ((value % 360) + 360) % 360;
+        }
+
+        function updateReadouts(p) {
+
+            elements.groundValue.textContent = p.ground + " mm";
+            elements.crankValue.textContent = p.crank + " mm";
+            elements.couplerValue.textContent = p.coupler + " mm";
+            elements.rockerValue.textContent = p.rocker + " mm";
+
+            elements.groundReadout.textContent = p.ground + " mm";
+            elements.inputAngle.textContent =
+                normalizeAngle(angle).toFixed(1) + "°";
+
+            elements.angleStatus.textContent =
+                "INPUT: " + normalizeAngle(angle).toFixed(1) + "°";
+        }
+
+        function render() {
+
+            const p = getParameters();
+            updateReadouts(p);
+
+            const O4 = {
+                x: O2.x + p.ground,
+                y: O2.y
+            };
+
+            const radians = angle * Math.PI / 180;
+
+            const A = {
+                x: O2.x + p.crank * Math.cos(radians),
+                y: O2.y - p.crank * Math.sin(radians)
+            };
+
+            setLine(elements.groundLink, O2, O4);
+            setLine(elements.crankLink, O2, A);
+
+            setCircle(elements.pivotO4, O4);
+            setCircle(elements.centerO4, O4);
+
+            const B = circleIntersection(
+                A,
+                O4,
+                p.coupler,
+                p.rocker
+            );
+
+            if (!B) {
+
+                elements.couplerLink.style.display = "none";
+                elements.rockerLink.style.display = "none";
+                elements.jointA.style.display = "none";
+                elements.jointB.style.display = "none";
+                elements.labelA.style.display = "none";
+                elements.labelB.style.display = "none";
+
+                elements.mechanismStatus.textContent =
+                    "● NO VALID ASSEMBLY";
+
+                elements.mechanismStatus.style.color = "#FF6B6B";
+
+                elements.couplerAngle.textContent = "--";
+                elements.outputAngle.textContent = "--";
+
+                return;
+            }
+
+            elements.couplerLink.style.display = "";
+            elements.rockerLink.style.display = "";
+            elements.jointA.style.display = "";
+            elements.jointB.style.display = "";
+            elements.labelA.style.display = "";
+            elements.labelB.style.display = "";
+
+            setLine(elements.couplerLink, A, B);
+            setLine(elements.rockerLink, O4, B);
+
+            setCircle(elements.jointA, A);
+            setCircle(elements.jointB, B);
+
+            elements.labelA.setAttribute("x", A.x + 12);
+            elements.labelA.setAttribute("y", A.y - 12);
+
+            elements.labelB.setAttribute("x", B.x + 12);
+            elements.labelB.setAttribute("y", B.y - 12);
+
+            const couplerRadians = Math.atan2(
+                A.y - B.y,
+                B.x - A.x
+            );
+
+            const rockerRadians = Math.atan2(
+                O4.y - B.y,
+                B.x - O4.x
+            );
+
+            elements.couplerAngle.textContent =
+                degrees(couplerRadians).toFixed(1) + "°";
+
+            elements.outputAngle.textContent =
+                degrees(rockerRadians).toFixed(1) + "°";
+
+            elements.mechanismStatus.textContent =
+                "● VALID ASSEMBLY";
+
+            elements.mechanismStatus.style.color = "#F28C28";
+        }
+
+        function animate(timestamp) {
+
+            if (!playing) return;
+
+            if (!previousTime) {
+                previousTime = timestamp;
+            }
+
+            const delta = Math.min(timestamp - previousTime, 50);
+            previousTime = timestamp;
+
+            angle = (angle + delta * 0.035) % 360;
+
+            render();
+
+            animationFrame = requestAnimationFrame(animate);
+        }
+
+        function play() {
+
+            if (playing) return;
+
+            playing = true;
+            previousTime = 0;
+
+            elements.playButton.textContent = "Ⅱ PAUSE";
+
+            animationFrame = requestAnimationFrame(animate);
+        }
+
+        function pause() {
+
+            playing = false;
+
+            if (animationFrame !== null) {
+                cancelAnimationFrame(animationFrame);
+                animationFrame = null;
+            }
+
+            elements.playButton.textContent = "▶ PLAY";
+        }
+
+        function reset() {
+
+            pause();
+
+            angle = 0;
+
+            Object.keys(defaults).forEach(key => {
+                elements[key].value = defaults[key];
+            });
+
+            render();
+        }
+
+        Object.values({
+            ground: elements.ground,
+            crank: elements.crank,
+            coupler: elements.coupler,
+            rocker: elements.rocker
+        }).forEach(slider => {
+            slider.addEventListener("input", render);
+        });
+
+        elements.playButton.addEventListener("click", () => {
+            if (playing) {
+                pause();
+            } else {
+                play();
+            }
+        });
+
+        elements.resetButton.addEventListener("click", reset);
+
+        render();
+
+    })();
+    </script>
 
 </body>
 </html>
