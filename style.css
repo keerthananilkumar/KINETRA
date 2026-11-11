@@ -1199,3 +1199,51 @@ a {
     transform-origin: right center;
 }
 
+/* =========================================
+   KINETRA v0.3 — RESPONSIVE TECHNICAL DISPLAY
+========================================= */
+
+@media (max-width: 767px) {
+
+    .component-label,
+    .measurement {
+        font-size: 8px;
+        letter-spacing: 1px;
+        padding: 4px 6px;
+    }
+
+    .label-drive {
+        top: 10%;
+        left: 4%;
+    }
+
+    .label-output {
+        bottom: 10%;
+        right: 4%;
+    }
+
+    .measurement-top {
+        top: 7%;
+        right: 5%;
+    }
+
+    .measurement-side {
+        bottom: 7%;
+        left: 5%;
+    }
+
+    .label-drive::after,
+    .label-output::before {
+        width: 35px;
+    }
+
+    .ring-outer {
+        width: 85%;
+    }
+
+    .ring-inner {
+        width: 60%;
+    }
+
+}
+
