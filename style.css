@@ -1058,3 +1058,88 @@ a {
     }
 
 }
+
+/* =========================================
+   KINETRA v0.3 — TECHNICAL VISUALIZATION
+========================================= */
+
+.mechanical-display {
+    isolation: isolate;
+}
+
+.axis-line {
+    position: absolute;
+    background: rgba(167, 173, 177, 0.12);
+    z-index: 0;
+}
+
+.axis-horizontal {
+    width: 100%;
+    height: 1px;
+    top: 50%;
+    left: 0;
+}
+
+.axis-vertical {
+    height: 100%;
+    width: 1px;
+    left: 50%;
+    top: 0;
+}
+
+.technical-ring {
+    position: absolute;
+    border: 1px dashed rgba(242, 140, 40, 0.25);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.ring-outer {
+    width: 78%;
+    aspect-ratio: 1;
+}
+
+.ring-inner {
+    width: 55%;
+    aspect-ratio: 1;
+    border-style: solid;
+    border-color: rgba(167, 173, 177, 0.13);
+}
+
+.component-label,
+.measurement {
+    position: absolute;
+    z-index: 3;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--silver);
+    background: rgba(23, 27, 30, 0.85);
+    padding: 6px 9px;
+    border: 1px solid var(--border);
+}
+
+.label-drive {
+    top: 12%;
+    left: 8%;
+}
+
+.label-output {
+    bottom: 12%;
+    right: 8%;
+}
+
+.measurement-top {
+    top: 8%;
+    right: 9%;
+    color: var(--orange);
+}
+
+.measurement-side {
+    bottom: 9%;
+    left: 9%;
+    color: var(--orange);
+}
+
+.gear {
+    z-index: 2;
+}
