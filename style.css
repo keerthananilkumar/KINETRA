@@ -1208,7 +1208,6 @@ a {
     transform: rotate(25deg);
     transform-origin: left center;
 }
-
 .label-output::before {
     content: "";
     position: absolute;
@@ -1216,8 +1215,11 @@ a {
     height: 1px;
     right: 100%;
     top: 50%;
-    background: var(--orange);
-    opacity: 0.65;
+    background:
+        radial-gradient(circle at 0% 50%, var(--orange) 0 3px, transparent 3.5px),
+        linear-gradient(var(--orange), var(--orange));
+    filter: drop-shadow(0 0 3px rgba(242, 140, 40, 0.7));
+    opacity: 0.8;
     transform: rotate(-25deg);
     transform-origin: right center;
 }
