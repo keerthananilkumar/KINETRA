@@ -1247,3 +1247,39 @@ a {
 
 }
 
+/* =========================================
+   KINETRA v0.3 — TABLET DISPLAY
+========================================= */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .component-label,
+    .measurement {
+        font-size: 9px;
+        letter-spacing: 1px;
+        padding: 5px 7px;
+    }
+
+    .label-drive {
+        left: 5%;
+    }
+
+    .label-output {
+        right: 5%;
+    }
+
+    .label-drive::after,
+    .label-output::before {
+        width: 42px;
+    }
+
+    .ring-outer {
+        width: 82%;
+    }
+
+    .ring-inner {
+        width: 58%;
+    }
+
+}
+
